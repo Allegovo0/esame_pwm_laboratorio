@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Description of three cities and their real time weather">
+    <meta name="keywords" content="Milano Milan Napoli Naples Modena wheather cities">
+    <meta name="copyright" content="Alessandro Govoni">
+    <meta name="author" content="Alessandro Govoni">
+    <title>Cities - weather</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script type="application/ld+json">
+      {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Cities weather",
+          "description": "Description of three cities and their real time weather",
+          "publisher": {
+              "@type": "Person",
+              "name": "Alessandro Govoni"
+          }
+
+      }
+    </script>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/bootstrap-dark.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/toggle-bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/toggle-bootstrap-dark.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/toggle-bootstrap-print.min.css" />
+    <link rel="stylesheet" href="css/esame_laboratorio.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </head>
+  <body class="bootstrap" onload="getWeather(),check_dark_preset()">
+
+<header>
+  <nav id="navbar" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Cities - weather</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#mi">Milano</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#mo">Modena</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#na">Napoli</a>
+          </li>
+          <li>
+            <button id="dark" type="button" class="btn btn-dark" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="toggle_dark()">Light/Dark mode</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="bootstrap">
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="img/milano.jpg"></img>
+        <div class="carousel-caption d-none d-md-block text-start">
+            <h1 itemprop="name">Milano</h1>
+            <p itemprop="description">Milano, capoluogo della Lombardia</p>
+            <p id="milano_wea">WEATHER API ERROR!!!</p>
+            <p><a class="btn btn-lg btn-primary" href="#mi">Premi qui</a></p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="img/modena.jpg">
+
+       <div class="carousel-caption d-none d-md-block text-start">
+
+            <h1 itemprop="name">Modena</h1>
+            <p itemprop="description" >Modena città dei motori.</p>
+            <p id="modena_wea">Temperatura attuale:</p>
+            <p><a class="btn btn-lg btn-primary" href="#mo">Premi qui</a></p>
+
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100"  src="img/napoli.png"></img>
+
+        <div class="carousel-caption d-none d-md-block text-start">
+
+            <h1 itemprop="name">Napoli.</h1>
+            <p itemprop="description" >Napoli, la pizza, il mare, altro. </p>
+            <p id="napoli_wea">Temperatura attuale:</p>
+            <p><a class="btn btn-lg btn-primary" href="#na">Premi qui</a></p>
+        </div>
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+
+    <!--<div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">-->
+
+    <!-- START THE FEATURETTES -->
+      <a class="anchor" id="mi"></a>
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Milan. <span class="text-muted">Summary description.</span></h2>
+        <p class="lead">Milan , Italian Milano, capital of Lombardy region, northern Italy. The area was settled by the Gauls c. 600 BCE. Known as Mediolanum, it was conquered by the Romans in 222 BCE. Attacked in 452 CE by Attila and in 539 by the Goths, it fell to Charlemagne in 774. Milan’s power grew in the 11th century, but it was destroyed by the Holy Roman Empire in 1162. Rebuilt as part of the Lombard League in 1167, Milan achieved independence in 1183. In 1450 Francesco Sforza founded a new dynasty there; after 1499 it was ruled alternately by the French and the Sforza family until 1535, when the Habsburgs obtained it. Napoleon took power in 1796, and in 1805 it became the capital of his Kingdom of Italy. Milan was incorporated into unified Italy in 1860. It was heavily damaged during World War II but was rebuilt. It is Italy’s most important economic centre, noted for its fashion industry as well as finance, retail and wholesale trade, media and publishing, and other services. Its historic sites include the medieval Duomo, Europe’s third largest cathedral; the Palazzo di Brera (1651); the monastery that houses Leonardo da Vinci’s Last Supper; and La Scala opera house.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Milan picture" width="500" height="500"  role="img"  focusable="false" src="img/milano.jpg"></img>
+        <h2 class="featurette-heading">Climate</h2>
+        <p class="lead">Milan’s climate is continental, with damp, chilly winters and hot, humid summers. Snow falls between December and February, and springtime is generally rainy. In winter temperatures range between 30 and 50 °F (−1 and 10 °C) and in summer between 68 and 86 °F (20 and 30 °C). Characteristic of the Po Basin, fog often shrouds the city in winter. The removal of rice fields from the southern neighbourhoods and the closure of most of the city’s heavy industry have reduced the phenomenon. However, this has been offset somewhat by the growth of an almost uninterrupted built-up area around the city, which reduces local air circulation, and by the gray smog, or traffic-related air pollution, that often covers the city.</p>
+      </div>
+    </div>
+
+
+      <a class="anchor" id="mo"></a>
+    <hr class="featurette-divider" >
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Modena. <span class="text-muted">Summary description.</span></h2>
+        <p class="lead">With a population of 180,000, Modena is a city where you can enjoy the good life, whether it is through beautiful music, fine cuisine, or the high speed of a sports car. Ferraris and Maseratis can often be seen gliding down the roads of Modena and its surroundings – this is the area where the two legendary car makers are based.
+          After the Second World War, the area was economically depressed and there was very little industry. However, within the space of only fifty years, the city and the province are now acclaimed throughout the world for their flourishing and prosperous industrial districts and their cultural events and gastronomy. Today, Modena is one of the most advanced provinces in Europe, ranking 10th for average income per capita in Italy (2007 survey from Il Sole 24 Ore - Italy's leading financial daily newspaper).
+          Modena is also rich in architectural treasures such as the Ghirlandina Tower, the Cathedral and Piazza Grande, which was added to the World Heritage list by UNESCO in 1997.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Modena picture" width="500" height="500"  role="img"  focusable="false" src="img/modena.jpg"></img>
+        <h2 class="featurette-heading">Climate</h2>
+        <p class="lead">Modena has a humid subtropical climate, with continental influences. It has an average annual precipitation of 809 millimetres (31.9 in). Summers are hot and winters are cool, with snowfall. </p>
+
+      </div>
+    </div>
+      <a class="anchor" id="na"></a>
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Napoli. <span class="text-muted">Summary description.</span></h2>
+        <p class="lead">Naples, Italian Napoli ancient Neapolis, capital of Campania, southern Italy. Located on the northern side of the Bay of Naples, southeast of Rome, it was founded c. 600 BCE by refugees from an ancient Greek colony and was conquered by the Romans in the 4th century BCE. It became part of the realms of the Byzantines and Saracens. In the 11th century it was conquered by the Norman ruler of Sicily, and through the 19th century it was the capital of the Kingdom of the Two Sicilies and the Kingdom of Naples. It was entered by Giuseppe de Garibaldi’s expedition in 1860. Heavily damaged in World War II by Allied and German bombing, it was later rebuilt, but it suffered severe earthquake damage in 1980. It is a commercial and cultural centre and a major port with diversified industries. Among the city’s attractions are medieval castles, churches, and a university.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Naples picture" width="500" height="500"  role="img"  focusable="false" src="img/napoli.png"></img>
+        <h2 class="featurette-heading">Climate</h2>
+        <p class="lead"> High temperatures in July and August often exceed 90° F (32° C), while the damp, chilly winter is alleviated by many brilliant days. Winter temperatures rarely fall to freezing, and the snow occasionally appearing on Vesuvius is seldom seen in the town itself. The south wind, the sand-laden sirocco, intermittently brings a burdensome humidity, terminating in rain.</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+   <!-- </div>-->
+  </div>
+
+  <!-- FOOTER -->
+
+</main>
+
+<footer class="container bootstrap" id="foot">
+  <p class="float-end"><a href="#">Torna in alto</a></p>
+  <p>&copy; 2022 Alessandro Govoni 984539. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
+
+
+
+
+  </body>
+
+  <script type="text/javascript" src="js/esame_laboratorio.js"></script>
+  <script>
+    var weather_worker = new Worker('js/weather_worker.js');
+    window.onload = function (){
+      weather_worker.postMessage("update_data");
+    };
+    weather_worker.onmessage = function(e) {
+      let cities = e.data;
+      for (i in cities){
+        document.getElementById(i + "_wea").innerText = "Temperatura attuale: " + cities[i] + " °C";
+
+      }
+    }
+
+
+  </script>
+</html>
